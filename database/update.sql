@@ -872,3 +872,6 @@ ALTER TABLE `v2_server_v2node`
 
 ALTER TABLE `v2_server_v2node`
     ADD COLUMN `sni_pool` text DEFAULT NULL COMMENT 'ShadowFlow多SNI池(每行一个域名)' AFTER `download_rate`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `sni_mode` varchar(16) DEFAULT 'random' COMMENT 'SNI切换模式(random/fixed)' AFTER `sni_pool`;

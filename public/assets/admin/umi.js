@@ -106408,7 +106408,7 @@
                     placeholder: "\u9009\u62e9\u4f2a\u88c5\u6a21\u5f0f",
                     style: { width: "100%" },
                     onChange: e=>this.formChange("camouflage", e)
-                }, y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "shadowflow" && y.a.createElement("div", {
+                }, y.a.createElement(N["a"].Option, { value: "random" }, "\u968f\u673a\u5207\u6362"), y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "shadowflow" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
                     className: "form-group col-md-6 col-xs-12"
@@ -106429,10 +106429,16 @@
                 }))), e.protocol == "shadowflow" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
-                    className: "form-group col-md-12 col-xs-12"
+                    className: "form-group col-md-4 col-xs-12"
+                }, y.a.createElement("label", null, "SNI \u6a21\u5f0f"), y.a.createElement(N["a"], {
+                    value: e.sni_mode || "random",
+                    style: { width: "100%" },
+                    onChange: e=>this.formChange("sni_mode", e)
+                }, y.a.createElement(N["a"].Option, { value: "random" }, "\u968f\u673a\u5207\u6362"), y.a.createElement(N["a"].Option, { value: "fixed" }, "\u56fa\u5b9a\u7b2c\u4e00\u4e2a"))), y.a.createElement("div", {
+                    className: "form-group col-md-8 col-xs-12"
                 }, y.a.createElement("label", null, "SNI \u6c60 ", y.a.createElement("span", {
                     style: { color: "#999", fontSize: "12px" }
-                }, "(\u6bcf\u884c\u4e00\u4e2a\u57df\u540d\uff0c\u8fde\u63a5\u65f6\u968f\u673a\u9009\u62e9)")), y.a.createElement(s["a"].TextArea, {
+                }, "(\u6bcf\u884c\u4e00\u4e2a\u57df\u540d)")), y.a.createElement(s["a"].TextArea, {
                     placeholder: "www.apple.com\nwww.microsoft.com\ncdn.cloudflare.com",
                     value: e.sni_pool || "",
                     rows: 3,
