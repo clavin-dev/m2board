@@ -28,13 +28,7 @@ if ! command -v git &> /dev/null; then
     exit 1
 fi
 
-# 从 .env 读取数据库配置 (兼容 Laravel .env 格式)
-get_env_value() {
-    local key="$1"
-    grep -E "^${key}=" .env 2>/dev/null | head -1 | cut -d'=' -f2- | tr -d '\r' | tr -d '"' | tr -d "'"
-}
-
-echo -e "${YELLOW}[1/6] 备份当前配置...${NC}"
+echo -e "${YELLOW}[1/5] 备份当前配置...${NC}"
 BACKUP_DIR="backup_$(date +%Y%m%d_%H%M%S)"
 mkdir -p "$BACKUP_DIR"
 cp -f .env "$BACKUP_DIR/.env" 2>/dev/null
@@ -42,8 +36,7 @@ cp -f config/v2board.php "$BACKUP_DIR/v2board.php" 2>/dev/null
 echo -e "${GREEN}  ✓ 配置已备份到 $BACKUP_DIR/${NC}"
 
 echo ""
-echo -e "${YELLOW}[2/6] 添加 M2Board 源...${NC}"
-# 检查是否已有 m2board remote
+echo -e "${YELLOW}[2/5] 添加 M2Board 源...${NC}"
 if git remote | grep -q "m2board"; then
     git remote set-url m2board https://github.com/clavin-dev/m2board.git
     echo -e "${GREEN}  ✓ 已更新 m2board 远程源${NC}"
@@ -53,86 +46,40 @@ else
 fi
 
 echo ""
-echo -e "${YELLOW}[3/6] 拉取 M2Board 代码...${NC}"
+echo -e "${YELLOW}[3/5] 拉取 M2Board 代码...${NC}"
 git config --global --add safe.directory $(pwd)
 git fetch m2board
 git reset --hard m2board/main
 echo -e "${GREEN}  ✓ 代码已更新到 M2Board 最新版${NC}"
 
 echo ""
-echo -e "${YELLOW}[4/6] 更新 PHP 依赖...${NC}"
+echo -e "${YELLOW}[4/5] 更新 PHP 依赖...${NC}"
 rm -rf composer.lock composer.phar
 wget -q https://github.com/composer/composer/releases/latest/download/composer.phar -O composer.phar
 php composer.phar update -vvv
 
 echo ""
-echo -e "${YELLOW}[5/6] 执行数据库迁移 (ShadowFlow 字段)...${NC}"
+echo -e "${YELLOW}[5/5] 执行数据库迁移 + 重启服务...${NC}"
+# php artisan v2board:update 会自动:
+# 1. 读取 database/update.sql 里所有 SQL (包括 ShadowFlow 的 ALTER TABLE)
+# 2. 逐条执行，字段已存在会自动跳过
+# 3. 重启 horizon 队列
+php artisan v2board:update
 
-DB_HOST=$(get_env_value "DB_HOST")
-DB_PORT=$(get_env_value "DB_PORT")
-DB_DATABASE=$(get_env_value "DB_DATABASE")
-DB_USERNAME=$(get_env_value "DB_USERNAME")
-DB_PASSWORD=$(get_env_value "DB_PASSWORD")
-
-# 设置默认值
-DB_HOST=${DB_HOST:-127.0.0.1}
-DB_PORT=${DB_PORT:-3306}
-DB_DATABASE=${DB_DATABASE:-v2board}
-DB_USERNAME=${DB_USERNAME:-root}
-DB_PASSWORD=${DB_PASSWORD:-}
-
-# 检查 mysql 命令是否可用
-if command -v mysql &> /dev/null; then
-    # 检查是否已存在 camouflage 列
-    HAS_COLUMN=$(mysql -h"$DB_HOST" -P"$DB_PORT" -u"$DB_USERNAME" -p"$DB_PASSWORD" "$DB_DATABASE" -N -e \
-        "SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='$DB_DATABASE' AND TABLE_NAME='v2_server_v2node' AND COLUMN_NAME='camouflage'" 2>/dev/null)
-
-    if [ "$HAS_COLUMN" = "0" ]; then
-        echo -e "  正在添加 ShadowFlow 字段..."
-        mysql -h"$DB_HOST" -P"$DB_PORT" -u"$DB_USERNAME" -p"$DB_PASSWORD" "$DB_DATABASE" -e \
-            "ALTER TABLE v2_server_v2node ADD COLUMN camouflage varchar(32) DEFAULT NULL COMMENT 'ShadowFlow伪装模式' AFTER padding_scheme;" 2>/dev/null
-        mysql -h"$DB_HOST" -P"$DB_PORT" -u"$DB_USERNAME" -p"$DB_PASSWORD" "$DB_DATABASE" -e \
-            "ALTER TABLE v2_server_v2node ADD COLUMN shaping_settings text DEFAULT NULL COMMENT 'ShadowFlow流量整形JSON' AFTER camouflage;" 2>/dev/null
-        if [ $? -eq 0 ]; then
-            echo -e "${GREEN}  ✓ ShadowFlow 数据库字段已添加${NC}"
-        else
-            echo -e "${YELLOW}  ⚠ 字段添加可能失败，请手动执行:${NC}"
-            echo -e "  mysql -h$DB_HOST -u$DB_USERNAME -p $DB_DATABASE < database/migrations/add_shadowflow_to_v2node.sql"
-        fi
-    elif [ "$HAS_COLUMN" = "1" ]; then
-        echo -e "${GREEN}  ✓ ShadowFlow 字段已存在，跳过迁移${NC}"
-    else
-        echo -e "${YELLOW}  ⚠ 无法检测字段状态，尝试直接添加...${NC}"
-        mysql -h"$DB_HOST" -P"$DB_PORT" -u"$DB_USERNAME" -p"$DB_PASSWORD" "$DB_DATABASE" < database/migrations/add_shadowflow_to_v2node.sql 2>/dev/null
-        echo -e "${GREEN}  ✓ 迁移已执行 (如字段已存在会自动跳过)${NC}"
-    fi
-else
-    echo -e "${YELLOW}  ⚠ mysql 命令不可用，请手动执行:${NC}"
-    echo -e "  mysql -u$DB_USERNAME -p $DB_DATABASE < database/migrations/add_shadowflow_to_v2node.sql"
-fi
-
-# 执行 v2board 自带迁移
-php artisan v2board:update 2>/dev/null
-
-echo ""
-echo -e "${YELLOW}[6/6] 设置权限与服务...${NC}"
-
-# 获取 PHP 主版本号 (兼容各种输出格式)
+# PHP 8+ Webman 处理
 php_main_version=$(php -r 'echo PHP_MAJOR_VERSION;' 2>/dev/null)
-
 if [ -n "$php_main_version" ] && [ "$php_main_version" -ge 8 ] 2>/dev/null; then
     php composer.phar require joanhey/adapterman 2>/dev/null
-    if ! php -m 2>/dev/null | grep -q "pcntl"; then
-        if [ -f "cli-php.ini" ]; then
+    if [ -f "cli-php.ini" ]; then
+        if ! php -m 2>/dev/null | grep -q "pcntl"; then
             sed -i '/extension=redis.so/a extension=pcntl.so' cli-php.ini 2>/dev/null
         fi
-    fi
-    if [ -f "cli-php.ini" ]; then
         php -c cli-php.ini webman.php stop 2>/dev/null
-        echo -e "${YELLOW}  Webman 已停止，请手动重启${NC}"
+        echo -e "${YELLOW}  Webman 已停止${NC}"
     fi
 fi
 
+# 宝塔权限
 if [ -f "/etc/init.d/bt" ]; then
     chown -R www $(pwd)
     echo -e "${GREEN}  ✓ 宝塔权限已设置${NC}"
