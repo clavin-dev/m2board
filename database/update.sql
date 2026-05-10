@@ -863,3 +863,9 @@ ALTER TABLE `v2_server_v2node`
 
 ALTER TABLE `v2_server_v2node`
     ADD COLUMN `shaping_settings` text DEFAULT NULL COMMENT 'ShadowFlow流量整形JSON' AFTER `camouflage`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `upload_rate` int(11) DEFAULT NULL COMMENT 'ShadowFlow上行速率(Mbps)' AFTER `shaping_settings`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `download_rate` int(11) DEFAULT NULL COMMENT 'ShadowFlow下行速率(Mbps)' AFTER `upload_rate`;
