@@ -106408,24 +106408,6 @@
                     placeholder: "\u9009\u62e9\u4f2a\u88c5\u6a21\u5f0f",
                     style: { width: "100%" },
                     onChange: e=>this.formChange("camouflage", e)
-                }, y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "shadowflow" && y.a.createElement("div", {
-                    className: "row"
-                }, y.a.createElement("div", {
-                    className: "form-group col-md-6 col-xs-12"
-                }, y.a.createElement("label", null, "\u4f20\u8f93\u534f\u8bae ", y.a.createElement("a", {
-                    href: "javascript:void(0);",
-                    onClick: ()=>this.showChildDrawer("\u7f16\u8f91\u534f\u8bae\u914d\u7f6e", "network_settings")
-                }, "\u7f16\u8f91\u914d\u7f6e")), y.a.createElement(N["a"], {
-                    value: e.network || "tcp",
-                    style: { width: "100%" },
-                    onChange: e=>this.formChange("network", e)
-                }, y.a.createElement(N["a"].Option, { value: "tcp" }, "TCP"), y.a.createElement(N["a"].Option, { value: "ws" }, "WebSocket"), y.a.createElement(N["a"].Option, { value: "grpc" }, "gRPC"))), y.a.createElement("div", {
-                    className: "form-group col-md-6 col-xs-12"
-                }, y.a.createElement("label", null, "\u4f2a\u88c5\u6a21\u5f0f"), y.a.createElement(N["a"], {
-                    value: e.camouflage || null,
-                    placeholder: "\u9009\u62e9\u4f2a\u88c5\u6a21\u5f0f",
-                    style: { width: "100%" },
-                    onChange: e=>this.formChange("camouflage", e)
                 }, y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "anytls" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
