@@ -72,7 +72,13 @@ class ServerController extends Controller
             'obfs_password' => $this->nodeInfo->obfs_password,
             'padding_scheme' => $this->nodeInfo->padding_scheme,
             'camouflage' => $this->nodeInfo->camouflage,
-            'shaping_settings' => $this->nodeInfo->shaping_settings
+            'shaping_settings' => $this->nodeInfo->shaping_settings,
+            // ShadowFlow advanced config
+            'sni_mode' => $this->nodeInfo->sni_mode,
+            'switch_interval_min' => (int)($this->nodeInfo->switch_interval_min ?? 30),
+            'switch_interval_max' => (int)($this->nodeInfo->switch_interval_max ?? 120),
+            'upload_host' => $this->nodeInfo->upload_host,
+            'download_host' => $this->nodeInfo->download_host
         ];
 
         if ($this->nodeInfo->cipher === '2022-blake3-aes-128-gcm') {
