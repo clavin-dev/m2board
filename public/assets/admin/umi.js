@@ -104680,10 +104680,11 @@
                   , cert_apply = this.state.cert_apply;
                 return y.a.createElement(y.a.Fragment, null, y.a.createElement("div", null, y.a.createElement("div", {
                     className: "form-group"
-                }, y.a.createElement("label", null, "Server Name(SNI)"), y.a.createElement(s["a"], {
+                }, y.a.createElement("label", null, "Server Name(SNI)", tls == 2 && y.a.createElement("span", { style: { color: "#999", fontSize: "12px", marginLeft: "4px" } }, "(\u591a\u4e2a\u57df\u540d\u7528\u82f1\u6587\u9017\u53f7\u5206\u9694)")), y.a.createElement(s["a"].TextArea, {
                     value: t,
+                    rows: 2,
                     onChange: e=>this.change("server_name", e.target.value),
-                    placeholder: tls == 2 ? "REALITY\u5fc5\u586b\uff0c\u4e0e\u540e\u7aef\u4fdd\u6301\u4e00\u81f4" : ""
+                    placeholder: tls == 2 ? "REALITY\u5fc5\u586b\uff0c\u591a\u4e2a\u7528\u9017\u53f7\u5206\u9694: www.apple.com,www.microsoft.com" : ""
                 })), tls == 1 && cert_apply && y.a.createElement("div", {
                     className: "form-group"
                 }, y.a.createElement("label", null, "\u8bc1\u4e66\u6a21\u5f0fCert Mode"), y.a.createElement(N["a"], {
