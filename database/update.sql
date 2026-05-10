@@ -856,3 +856,10 @@ CREATE TABLE `v2_server_v2node` (
 
 ALTER TABLE `v2_server_route`
 CHANGE `action_value` `action_value` text NULL AFTER `action`;
+
+-- M2Board: ShadowFlow protocol support
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `camouflage` varchar(32) DEFAULT NULL COMMENT 'ShadowFlow伪装模式' AFTER `padding_scheme`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `shaping_settings` text DEFAULT NULL COMMENT 'ShadowFlow流量整形JSON' AFTER `camouflage`;
