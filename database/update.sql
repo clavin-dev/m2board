@@ -869,3 +869,6 @@ ALTER TABLE `v2_server_v2node`
 
 ALTER TABLE `v2_server_v2node`
     ADD COLUMN `download_rate` int(11) DEFAULT NULL COMMENT 'ShadowFlow下行速率(Mbps)' AFTER `upload_rate`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `sni_pool` text DEFAULT NULL COMMENT 'ShadowFlow多SNI池(每行一个域名)' AFTER `download_rate`;

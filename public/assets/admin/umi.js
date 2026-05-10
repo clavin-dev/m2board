@@ -106426,6 +106426,19 @@
                     onChange: e=>{
                         this.formChange("download_rate", e.target.value)
                     }
+                }))), e.protocol == "shadowflow" && y.a.createElement("div", {
+                    className: "row"
+                }, y.a.createElement("div", {
+                    className: "form-group col-md-12 col-xs-12"
+                }, y.a.createElement("label", null, "SNI \u6c60 ", y.a.createElement("span", {
+                    style: { color: "#999", fontSize: "12px" }
+                }, "(\u6bcf\u884c\u4e00\u4e2a\u57df\u540d\uff0c\u8fde\u63a5\u65f6\u968f\u673a\u9009\u62e9)")), y.a.createElement(s["a"].TextArea, {
+                    placeholder: "www.apple.com\nwww.microsoft.com\ncdn.cloudflare.com",
+                    value: e.sni_pool || "",
+                    rows: 3,
+                    onChange: e=>{
+                        this.formChange("sni_pool", e.target.value)
+                    }
                 }))), e.protocol == "anytls" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
