@@ -106430,21 +106430,23 @@
                     className: "row"
                 }, y.a.createElement("div", {
                     className: "form-group col-md-6 col-xs-12"
-                }, y.a.createElement("label", null, "\u4e0a\u884c\u57df\u540d", y.a.createElement("span", {
+                }, y.a.createElement("label", null, "\u4e0a\u884c\u57df\u540d\u6c60", y.a.createElement("span", {
                     style: { color: "#999", fontSize: "12px", marginLeft: "4px" }
-                }, "(\u5ba2\u6237\u7aef\u2192\u670d\u52a1\u5668)")), y.a.createElement(s["a"], {
-                    placeholder: "upload.example.com",
+                }, "(\u6bcf\u884c\u4e00\u4e2a\uff0c\u968f\u673a\u5207\u6362)")), y.a.createElement(s["a"].TextArea, {
+                    placeholder: "up1.abc.com\nup2.xyz.com\nup3.def.com",
                     value: e.upload_host || "",
+                    rows: 3,
                     onChange: e=>{
                         this.formChange("upload_host", e.target.value)
                     }
                 })), y.a.createElement("div", {
                     className: "form-group col-md-6 col-xs-12"
-                }, y.a.createElement("label", null, "\u4e0b\u884c\u57df\u540d", y.a.createElement("span", {
+                }, y.a.createElement("label", null, "\u4e0b\u884c\u57df\u540d\u6c60", y.a.createElement("span", {
                     style: { color: "#999", fontSize: "12px", marginLeft: "4px" }
-                }, "(\u670d\u52a1\u5668\u2192\u5ba2\u6237\u7aef)")), y.a.createElement(s["a"], {
-                    placeholder: "download.example.com",
+                }, "(\u6bcf\u884c\u4e00\u4e2a\uff0c\u968f\u673a\u5207\u6362)")), y.a.createElement(s["a"].TextArea, {
+                    placeholder: "dl1.abc.com\ndl2.xyz.com\ndl3.def.com",
                     value: e.download_host || "",
+                    rows: 3,
                     onChange: e=>{
                         this.formChange("download_host", e.target.value)
                     }
