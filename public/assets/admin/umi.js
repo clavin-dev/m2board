@@ -106408,7 +106408,7 @@
                     placeholder: "\u9009\u62e9\u4f2a\u88c5\u6a21\u5f0f",
                     style: { width: "100%" },
                     onChange: e=>this.formChange("camouflage", e)
-                }, y.a.createElement(N["a"].Option, { value: "random" }, "\u968f\u673a\u5207\u6362"), y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "shadowflow" && y.a.createElement("div", {
+                }, y.a.createElement(N["a"].Option, { value: "random" }, "\u8fde\u63a5\u95f4\u968f\u673a"), y.a.createElement(N["a"].Option, { value: "dynamic" }, "\u8fde\u63a5\u4e2d\u52a8\u6001\u5207\u6362"), y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "shadowflow" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
                     className: "form-group col-md-6 col-xs-12"
@@ -106425,6 +106425,28 @@
                     value: e.download_rate || "",
                     onChange: e=>{
                         this.formChange("download_rate", e.target.value)
+                    }
+                }))), e.protocol == "shadowflow" && e.camouflage == "dynamic" && y.a.createElement("div", {
+                    className: "row"
+                }, y.a.createElement("div", {
+                    className: "form-group col-md-6 col-xs-12"
+                }, y.a.createElement("label", null, "\u5207\u6362\u95f4\u9694 (\u79d2) ", y.a.createElement("span", {
+                    style: { color: "#999", fontSize: "12px" }
+                }, "\u6700\u5c0f")), y.a.createElement(s["a"], {
+                    placeholder: "30",
+                    value: e.switch_interval_min || "",
+                    onChange: e=>{
+                        this.formChange("switch_interval_min", e.target.value)
+                    }
+                })), y.a.createElement("div", {
+                    className: "form-group col-md-6 col-xs-12"
+                }, y.a.createElement("label", null, "\u5207\u6362\u95f4\u9694 (\u79d2) ", y.a.createElement("span", {
+                    style: { color: "#999", fontSize: "12px" }
+                }, "\u6700\u5927")), y.a.createElement(s["a"], {
+                    placeholder: "120",
+                    value: e.switch_interval_max || "",
+                    onChange: e=>{
+                        this.formChange("switch_interval_max", e.target.value)
                     }
                 }))), e.protocol == "shadowflow" && y.a.createElement("div", {
                     className: "row"
