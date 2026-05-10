@@ -25,7 +25,7 @@ class V2nodeController extends Controller
             'tls' => 'required|in:0,1,2',
             'tls_settings' => 'nullable|array',
             'flow' => 'nullable|in:xtls-rprx-vision',
-            'network' => 'required|in:tcp,ws,grpc,http,httpupgrade,xhttp',
+            'network' => 'required|in:tcp,ws,grpc,http,httpupgrade,xhttp,shadowstream',
             'network_settings' => 'nullable|array',
             'encryption' => 'nullable',
             'encryption_settings' => 'nullable|array',

@@ -106401,7 +106401,7 @@
                     value: e.network ?? "tcp",
                     style: { width: "100%" },
                     onChange: e=>this.formChange("network", e)
-                }, y.a.createElement(N["a"].Option, { value: "tcp" }, "TCP"), y.a.createElement(N["a"].Option, { value: "ws" }, "WebSocket"), y.a.createElement(N["a"].Option, { value: "grpc" }, "gRPC"))), y.a.createElement("div", {
+                }, y.a.createElement(N["a"].Option, { value: "tcp" }, "TCP"), y.a.createElement(N["a"].Option, { value: "ws" }, "WebSocket"), y.a.createElement(N["a"].Option, { value: "grpc" }, "gRPC"), y.a.createElement(N["a"].Option, { value: "shadowstream" }, "ShadowStream"))), y.a.createElement("div", {
                     className: "form-group col-md-6 col-xs-12"
                 }, y.a.createElement("label", null, "\u4f2a\u88c5\u6a21\u5f0f"), y.a.createElement(N["a"], {
                     value: e.camouflage || null,
