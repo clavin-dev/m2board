@@ -106166,6 +106166,13 @@
                             tls: 1
                         })
                     });
+                } else if (e === "protocol" && t === "shadowflow") {
+                    this.setState({
+                        server: I()({}, this.state.server, {
+                            protocol: t,
+                            tls: 2
+                        })
+                    });
                 } else {
                     this.setState({
                         server: I()({},
@@ -106318,7 +106325,10 @@
                 }, "VLess"), y.a.createElement(N["a"].Option, {
                     key: 6,
                     value: "vmess"
-                }, "VMess"))), e.protocol != null && e.protocol != "shadowsocks" && y.a.createElement("div", {
+                }, "VMess"), y.a.createElement(N["a"].Option, {
+                    key: 7,
+                    value: "shadowflow"
+                }, "ShadowFlow"))), e.protocol != null && e.protocol != "shadowsocks" && y.a.createElement("div", {
                     className: "form-group col-md-6 col-xs-12"
                 }, y.a.createElement("label", null, "\u5b89\u5168\u6027 ", (parseInt(e.tls) != 0 || e.protocol == "hysteria2" || e.protocol == "trojan" || e.protocol == "tuic") && y.a.createElement("a", {
                     href: "javascript:void(0);",
@@ -106335,7 +106345,7 @@
                 }, "\u65e0"), y.a.createElement(N["a"].Option, {
                     key: 1,
                     value: 1
-                }, "TLS"), (e.protocol == "vless" || e.protocol == "anytls") && y.a.createElement(N["a"].Option, {
+                }, "TLS"), (e.protocol == "vless" || e.protocol == "anytls" || e.protocol == "shadowflow") && y.a.createElement(N["a"].Option, {
                     key: 2,
                     value: 2
                 }, "Reality")))), e.protocol == "shadowsocks" && y.a.createElement("div", {
@@ -106356,7 +106366,7 @@
                     value: "tcp"
                 }, "TCP"), y.a.createElement(N["a"].Option, {
                     value: "http"
-                }, "HTTP\u4f2a\u88c5")))), e.protocol != null && e.protocol != "hysteria2" && e.protocol != "shadowsocks" && e.protocol != "tuic" && y.a.createElement("div", {
+                }, "HTTP\u4f2a\u88c5")))), e.protocol != null && e.protocol != "hysteria2" && e.protocol != "shadowsocks" && e.protocol != "tuic" && e.protocol != "shadowflow" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
                     className: "form-group col-md-12 col-xs-12"
@@ -106380,7 +106390,43 @@
                     value: "httpupgrade"
                 }, "HTTPUpgrade"), e.protocol != "trojan" && y.a.createElement(N["a"].Option, {
                     value: "xhttp"
-                }, "XHTTP")))), e.protocol == "anytls" && y.a.createElement("div", {
+                }, "XHTTP")))), e.protocol == "shadowflow" && y.a.createElement("div", {
+                    className: "row"
+                }, y.a.createElement("div", {
+                    className: "form-group col-md-6 col-xs-12"
+                }, y.a.createElement("label", null, "\u4f20\u8f93\u534f\u8bae ", y.a.createElement("a", {
+                    href: "javascript:void(0);",
+                    onClick: ()=>this.showChildDrawer("\u7f16\u8f91\u534f\u8bae\u914d\u7f6e", "network_settings")
+                }, "\u7f16\u8f91\u914d\u7f6e")), y.a.createElement(N["a"], {
+                    value: e.network ?? "tcp",
+                    style: { width: "100%" },
+                    onChange: e=>this.formChange("network", e)
+                }, y.a.createElement(N["a"].Option, { value: "tcp" }, "TCP"), y.a.createElement(N["a"].Option, { value: "ws" }, "WebSocket"), y.a.createElement(N["a"].Option, { value: "grpc" }, "gRPC"))), y.a.createElement("div", {
+                    className: "form-group col-md-6 col-xs-12"
+                }, y.a.createElement("label", null, "\u4f2a\u88c5\u6a21\u5f0f"), y.a.createElement(N["a"], {
+                    value: e.camouflage || null,
+                    placeholder: "\u9009\u62e9\u4f2a\u88c5\u6a21\u5f0f",
+                    style: { width: "100%" },
+                    onChange: e=>this.formChange("camouflage", e)
+                }, y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "shadowflow" && y.a.createElement("div", {
+                    className: "row"
+                }, y.a.createElement("div", {
+                    className: "form-group col-md-6 col-xs-12"
+                }, y.a.createElement("label", null, "\u4f20\u8f93\u534f\u8bae ", y.a.createElement("a", {
+                    href: "javascript:void(0);",
+                    onClick: ()=>this.showChildDrawer("\u7f16\u8f91\u534f\u8bae\u914d\u7f6e", "network_settings")
+                }, "\u7f16\u8f91\u914d\u7f6e")), y.a.createElement(N["a"], {
+                    value: e.network || "tcp",
+                    style: { width: "100%" },
+                    onChange: e=>this.formChange("network", e)
+                }, y.a.createElement(N["a"].Option, { value: "tcp" }, "TCP"), y.a.createElement(N["a"].Option, { value: "ws" }, "WebSocket"), y.a.createElement(N["a"].Option, { value: "grpc" }, "gRPC"))), y.a.createElement("div", {
+                    className: "form-group col-md-6 col-xs-12"
+                }, y.a.createElement("label", null, "\u4f2a\u88c5\u6a21\u5f0f"), y.a.createElement(N["a"], {
+                    value: e.camouflage || null,
+                    placeholder: "\u9009\u62e9\u4f2a\u88c5\u6a21\u5f0f",
+                    style: { width: "100%" },
+                    onChange: e=>this.formChange("camouflage", e)
+                }, y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "anytls" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
                     className: "form-group col-md-12 col-xs-12"
@@ -106695,6 +106741,10 @@
                 case "anytls":
                     return y.a.createElement(g["a"], {
                         color: "#FF8C00"
+                    }, t)
+                case "shadowflow":
+                    return y.a.createElement(g["a"], {
+                        color: "#00CED1"
                     }, t)
                 case "v2node":
                     return y.a.createElement(g["a"], {
