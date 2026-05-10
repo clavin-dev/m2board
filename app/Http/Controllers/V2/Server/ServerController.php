@@ -70,7 +70,9 @@ class ServerController extends Controller
             'down_mbps' => $this->nodeInfo->down_mbps,
             'obfs' => $this->nodeInfo->obfs,
             'obfs_password' => $this->nodeInfo->obfs_password,
-            'padding_scheme' => $this->nodeInfo->padding_scheme
+            'padding_scheme' => $this->nodeInfo->padding_scheme,
+            'camouflage' => $this->nodeInfo->camouflage,
+            'shaping_settings' => $this->nodeInfo->shaping_settings
         ];
 
         if ($this->nodeInfo->cipher === '2022-blake3-aes-128-gcm') {

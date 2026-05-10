@@ -454,6 +454,8 @@ CREATE TABLE `v2_server_v2node` (
                                     `obfs` varchar(64) DEFAULT NULL COMMENT 'hysteria1混淆密码/hysteria2混淆类型',
                                     `obfs_password` varchar(255) DEFAULT NULL COMMENT 'hysteria2混淆密码',
                                     `padding_scheme` text COMMENT 'anytls填充配置',
+                                    `camouflage` varchar(32) DEFAULT NULL COMMENT 'ShadowFlow伪装模式',
+                                    `shaping_settings` text DEFAULT NULL COMMENT 'ShadowFlow流量整形JSON',
                                     `created_at` int(11) NOT NULL,
                                     `updated_at` int(11) NOT NULL,
                                     PRIMARY KEY (`id`)

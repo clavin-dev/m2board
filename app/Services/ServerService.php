@@ -473,6 +473,7 @@ class ServerService
                 return ServerVless::find($serverId);
             case 'anytls':
                 return ServerAnytls::find($serverId);
+
             default:
                 return false;
         }

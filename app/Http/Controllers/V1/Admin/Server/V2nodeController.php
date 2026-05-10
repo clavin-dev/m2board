@@ -21,7 +21,7 @@ class V2nodeController extends Controller
             'listen_ip' => 'nullable',
             'port' => 'required',
             'server_port' => 'required',
-            'protocol' => 'required|in:shadowsocks,vmess,vless,trojan,tuic,hysteria2,anytls',
+            'protocol' => 'required|in:shadowsocks,vmess,vless,trojan,tuic,hysteria2,anytls,shadowflow',
             'tls' => 'required|in:0,1,2',
             'tls_settings' => 'nullable|array',
             'flow' => 'nullable|in:xtls-rprx-vision',
@@ -42,13 +42,24 @@ class V2nodeController extends Controller
             'tags' => 'nullable|array',
             'rate' => 'required',
             'show' => 'nullable|in:0,1',
-            'sort' => 'nullable'
+            'sort' => 'nullable',
+            // ShadowFlow 专用
+            'camouflage' => 'nullable|in:web_browsing,live_stream,file_download,video_call',
+            'shaping_settings' => 'nullable',
         ]);
         if ($params['protocol'] == 'anytls' && $params['tls'] === 0) {
             $params['tls'] = 1;
         }
         if (in_array($params['protocol'], ['hysteria2', 'trojan', 'tuic'])) {
             $params['tls'] = 1;
+        }
+        // ShadowFlow 默认使用 Reality (tls=2)
+        if ($params['protocol'] == 'shadowflow' && !isset($params['tls'])) {
+            $params['tls'] = 2;
+        }
+        // ShadowFlow shaping_settings JSON 解码
+        if (isset($params['shaping_settings']) && is_string($params['shaping_settings'])) {
+            $params['shaping_settings'] = json_decode($params['shaping_settings']);
         }
         if (isset($params['tls']) && (int)$params['tls'] === 2) {
             $keyPair = SodiumCompat::crypto_box_keypair();
