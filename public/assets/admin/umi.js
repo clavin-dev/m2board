@@ -106408,7 +106408,25 @@
                     placeholder: "\u9009\u62e9\u4f2a\u88c5\u6a21\u5f0f",
                     style: { width: "100%" },
                     onChange: e=>this.formChange("camouflage", e)
-                }, y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "anytls" && y.a.createElement("div", {
+                }, y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "shadowflow" && y.a.createElement("div", {
+                    className: "row"
+                }, y.a.createElement("div", {
+                    className: "form-group col-md-6 col-xs-12"
+                }, y.a.createElement("label", null, "\u4e0a\u884c\u901f\u7387 (Mbps)"), y.a.createElement(s["a"], {
+                    placeholder: "\u4e0d\u9650\u5236",
+                    value: e.upload_rate || "",
+                    onChange: e=>{
+                        this.formChange("upload_rate", e.target.value)
+                    }
+                })), y.a.createElement("div", {
+                    className: "form-group col-md-6 col-xs-12"
+                }, y.a.createElement("label", null, "\u4e0b\u884c\u901f\u7387 (Mbps)"), y.a.createElement(s["a"], {
+                    placeholder: "\u4e0d\u9650\u5236",
+                    value: e.download_rate || "",
+                    onChange: e=>{
+                        this.formChange("download_rate", e.target.value)
+                    }
+                }))), e.protocol == "anytls" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
                     className: "form-group col-md-12 col-xs-12"
