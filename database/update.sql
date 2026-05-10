@@ -881,3 +881,9 @@ ALTER TABLE `v2_server_v2node`
 
 ALTER TABLE `v2_server_v2node`
     ADD COLUMN `switch_interval_max` int(11) DEFAULT 120 COMMENT '伪装动态切换最大间隔(秒)' AFTER `switch_interval_min`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `upload_host` varchar(255) DEFAULT NULL COMMENT '上行域名(客户端→服务器)' AFTER `switch_interval_max`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `download_host` varchar(255) DEFAULT NULL COMMENT '下行域名(服务器→客户端)' AFTER `upload_host`;
