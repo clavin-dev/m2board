@@ -47,8 +47,15 @@ fi
 
 echo ""
 echo -e "${YELLOW}[3/5] 拉取 M2Board 代码...${NC}"
-git config --global --add safe.directory $(pwd)
+git config --global --add safe.directory "$(pwd)"
 git fetch m2board
+
+echo -e "${RED}警告: 即将执行 git reset --hard，这会丢弃所有未提交的本地修改！${NC}"
+read -p "确认继续？(y/N) " confirm
+if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
+    echo -e "${YELLOW}已取消操作${NC}"
+    exit 0
+fi
 git reset --hard m2board/main
 echo -e "${GREEN}  ✓ 代码已更新到 M2Board 最新版${NC}"
 
@@ -56,6 +63,7 @@ echo ""
 echo -e "${YELLOW}[4/5] 更新 PHP 依赖...${NC}"
 rm -rf composer.lock composer.phar
 wget -q https://github.com/composer/composer/releases/latest/download/composer.phar -O composer.phar
+echo -e "${YELLOW}  注意: composer.phar 未验证签名，生产环境建议使用包管理器安装 composer${NC}"
 php composer.phar update -vvv
 
 echo ""
@@ -81,7 +89,7 @@ fi
 
 # 宝塔权限
 if [ -f "/etc/init.d/bt" ]; then
-    chown -R www $(pwd)
+    chown -R www "$(pwd)"
     echo -e "${GREEN}  ✓ 宝塔权限已设置${NC}"
 fi
 

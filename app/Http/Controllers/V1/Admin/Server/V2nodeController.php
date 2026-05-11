@@ -216,11 +216,9 @@ class V2nodeController extends Controller
 
     public function drop(Request $request)
     {
-        if ($request->input('id')) {
-            $server = ServerV2node::find($request->input('id'));
-            if (!$server) {
-                abort(500, '节点ID不存在');
-            }
+        $server = ServerV2node::find($request->input('id'));
+        if (!$server) {
+            abort(500, '节点ID不存在');
         }
         return response([
             'data' => $server->delete()
@@ -251,11 +249,12 @@ class V2nodeController extends Controller
     public function copy(Request $request)
     {
         $server = ServerV2node::find($request->input('id'));
-        $server->show = 0;
         if (!$server) {
             abort(500, '服务器不存在');
         }
-        if (!ServerV2node::create($server->toArray())) {
+        $newServer = $server->replicate();
+        $newServer->show = 0;
+        if (!$newServer->save()) {
             abort(500, '复制失败');
         }
 

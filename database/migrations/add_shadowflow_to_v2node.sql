@@ -3,7 +3,7 @@
 
 -- 伪装模式: web_browsing, live_stream, file_download, video_call
 ALTER TABLE `v2_server_v2node`
-    ADD COLUMN `camouflage` varchar(32) DEFAULT NULL COMMENT 'ShadowFlow伪装模式: web_browsing, live_stream, file_download, video_call'
+    ADD COLUMN `camouflage` varchar(32) DEFAULT NULL COMMENT 'ShadowFlow伪装模式: random, dynamic'
     AFTER `padding_scheme`;
 
 -- 流量整形配置 JSON: {"padding":{"min":64,"max":256},"fragment":{"min_size":100,"max_size":500},"split":true}
