@@ -106409,7 +106409,7 @@
                     placeholder: "\u9009\u62e9\u4f2a\u88c5\u6a21\u5f0f",
                     style: { width: "100%" },
                     onChange: e=>this.formChange("camouflage", e)
-                }, y.a.createElement(N["a"].Option, { value: "random" }, "\u8fde\u63a5\u95f4\u968f\u673a"), y.a.createElement(N["a"].Option, { value: "dynamic" }, "\u8fde\u63a5\u4e2d\u52a8\u6001\u5207\u6362"), y.a.createElement(N["a"].Option, { value: null }, "\u65e0"), y.a.createElement(N["a"].Option, { value: "web_browsing" }, "\u7f51\u9875\u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "live_stream" }, "\u76f4\u64ad\u6d41"), y.a.createElement(N["a"].Option, { value: "file_download" }, "\u6587\u4ef6\u4e0b\u8f7d"), y.a.createElement(N["a"].Option, { value: "video_call" }, "\u89c6\u9891\u901a\u8bdd")))), e.protocol == "shadowflow" && y.a.createElement("div", {
+                }, y.a.createElement(N["a"].Option, { value: "dynamic" }, "\u81ea\u9002\u5e94(\u63a8\u8350)"), y.a.createElement(N["a"].Option, { value: "random" }, "\u8fde\u63a5\u95f4\u968f\u673a"), y.a.createElement(N["a"].Option, { value: null }, "\u65e0")))), e.protocol == "shadowflow" && y.a.createElement("div", {
                     className: "row"
                 }, y.a.createElement("div", {
                     className: "form-group col-md-6 col-xs-12"
@@ -106491,6 +106491,39 @@
                     rows: 3,
                     onChange: e=>{
                         this.formChange("sni_pool", e.target.value)
+                    }
+                }))), e.protocol == "shadowflow" && y.a.createElement("div", {
+                    className: "row"
+                }, y.a.createElement("div", {
+                    className: "form-group col-md-4 col-xs-12"
+                }, y.a.createElement("label", null, "\u6d41\u91cf\u753b\u50cf", y.a.createElement("span", {
+                    style: { color: "#999", fontSize: "12px", marginLeft: "4px" }
+                }, "(\u624b\u52a8\u6307\u5b9a)")), y.a.createElement(N["a"], {
+                    value: e.traffic_profile || null,
+                    placeholder: "\u81ea\u52a8(\u8ddf\u968f\u4f2a\u88c5\u6a21\u5f0f)",
+                    style: { width: "100%" },
+                    allowClear: true,
+                    onChange: e=>this.formChange("traffic_profile", e)
+                }, y.a.createElement(N["a"].Option, { value: "chrome_h2" }, "\ud83c\udf10 Chrome \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "safari" }, "\ud83c\udf4e Safari \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "firefox" }, "\ud83e\udd8a Firefox \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "apple_music" }, "\ud83c\udfb5 Apple Music"), y.a.createElement(N["a"].Option, { value: "douyin" }, "\ud83c\udfb5 \u6296\u97f3\u77ed\u89c6\u9891"), y.a.createElement(N["a"].Option, { value: "bilibili" }, "\ud83d\udcfa B\u7ad9\u89c6\u9891"), y.a.createElement(N["a"].Option, { value: "taobao" }, "\ud83d\uded2 \u6dd8\u5b9d\u8d2d\u7269"), y.a.createElement(N["a"].Option, { value: "icloud_sync" }, "\u2601\ufe0f iCloud \u540c\u6b65"), y.a.createElement(N["a"].Option, { value: "tencent_video" }, "\ud83c\udfa6 \u817e\u8baf\u89c6\u9891"))), y.a.createElement("div", {
+                    className: "form-group col-md-4 col-xs-12"
+                }, y.a.createElement("label", null, "\u8fde\u63a5\u6700\u5927\u751f\u547d\u5468\u671f", y.a.createElement("span", {
+                    style: { color: "#999", fontSize: "12px", marginLeft: "4px" }
+                }, "(\u79d2)")), y.a.createElement(s["a"], {
+                    placeholder: "0 = \u4e0d\u9650\u5236",
+                    value: e.conn_max_lifetime || "",
+                    onChange: e=>{
+                        this.formChange("conn_max_lifetime", e.target.value)
+                    }
+                })), y.a.createElement("div", {
+                    className: "form-group col-md-4 col-xs-12"
+                }, y.a.createElement("label", null, "\u8def\u5f84\u6c60", y.a.createElement("span", {
+                    style: { color: "#999", fontSize: "12px", marginLeft: "4px" }
+                }, "(\u6bcf\u884c\u4e00\u4e2a\uff0c\u7559\u7a7a\u7528\u9ed8\u8ba4)")), y.a.createElement(s["a"].TextArea, {
+                    placeholder: "/api/v2/events/{id}\n/console/{id}/live\n/socket.io/?sid={id}",
+                    value: e.path_pool || "",
+                    rows: 3,
+                    onChange: e=>{
+                        this.formChange("path_pool", e.target.value)
                     }
                 }))), e.protocol == "anytls" && y.a.createElement("div", {
                     className: "row"

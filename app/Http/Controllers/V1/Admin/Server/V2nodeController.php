@@ -44,7 +44,18 @@ class V2nodeController extends Controller
             'show' => 'nullable|in:0,1',
             'sort' => 'nullable',
             // ShadowFlow 专用
-            'camouflage' => 'nullable|in:web_browsing,live_stream,file_download,video_call',
+            'camouflage' => 'nullable|in:random,dynamic',
+            'traffic_profile' => 'nullable|in:chrome_h2,safari,firefox,apple_music,douyin,bilibili,taobao,icloud_sync,tencent_video',
+            'path_pool' => 'nullable|string',
+            'conn_max_lifetime' => 'nullable|integer|min:0',
+            'upload_rate' => 'nullable|numeric|min:0',
+            'download_rate' => 'nullable|numeric|min:0',
+            'upload_host' => 'nullable|string',
+            'download_host' => 'nullable|string',
+            'switch_interval_min' => 'nullable|integer|min:1',
+            'switch_interval_max' => 'nullable|integer|min:1',
+            'sni_mode' => 'nullable|in:random,fixed',
+            'sni_pool' => 'nullable|string',
             'shaping_settings' => 'nullable',
         ]);
         if ($params['protocol'] == 'anytls' && $params['tls'] === 0) {

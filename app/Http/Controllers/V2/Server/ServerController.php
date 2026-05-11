@@ -74,11 +74,17 @@ class ServerController extends Controller
             'camouflage' => $this->nodeInfo->camouflage,
             'shaping_settings' => $this->nodeInfo->shaping_settings,
             // ShadowFlow advanced config
+            'traffic_profile' => $this->nodeInfo->traffic_profile,
+            'path_pool' => $this->nodeInfo->path_pool,
+            'conn_max_lifetime' => (int)($this->nodeInfo->conn_max_lifetime ?? 0),
+            'upload_rate' => (float)($this->nodeInfo->upload_rate ?? 0),
+            'download_rate' => (float)($this->nodeInfo->download_rate ?? 0),
             'sni_mode' => $this->nodeInfo->sni_mode,
             'switch_interval_min' => (int)($this->nodeInfo->switch_interval_min ?? 30),
             'switch_interval_max' => (int)($this->nodeInfo->switch_interval_max ?? 120),
             'upload_host' => $this->nodeInfo->upload_host,
-            'download_host' => $this->nodeInfo->download_host
+            'download_host' => $this->nodeInfo->download_host,
+            'sni_pool' => $this->nodeInfo->sni_pool
         ];
 
         if ($this->nodeInfo->cipher === '2022-blake3-aes-128-gcm') {
