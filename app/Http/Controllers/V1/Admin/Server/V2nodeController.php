@@ -45,7 +45,7 @@ class V2nodeController extends Controller
             'sort' => 'nullable',
             // ShadowFlow 专用
             'camouflage' => 'nullable|in:random,dynamic',
-            'traffic_profile' => 'nullable|in:chrome_h2,safari,firefox,apple_music,douyin,bilibili,taobao,icloud_sync,tencent_video',
+            'traffic_profile' => 'nullable|in:auto,chrome_h2,safari,firefox,apple_music,douyin,bilibili,taobao,icloud_sync,tencent_video',
             'path_pool' => 'nullable|string',
             'conn_max_lifetime' => 'nullable|integer|min:0',
             'upload_rate' => 'nullable|numeric|min:0',

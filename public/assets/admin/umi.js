@@ -106496,15 +106496,13 @@
                     className: "row"
                 }, y.a.createElement("div", {
                     className: "form-group col-md-4 col-xs-12"
-                }, y.a.createElement("label", null, "\u6d41\u91cf\u753b\u50cf", y.a.createElement("span", {
-                    style: { color: "#999", fontSize: "12px", marginLeft: "4px" }
-                }, "(\u624b\u52a8\u6307\u5b9a)")), y.a.createElement(N["a"], {
-                    value: e.traffic_profile || null,
+                }, y.a.createElement("label", null, "\u6d41\u91cf\u753b\u50cf"), y.a.createElement(N["a"], {
+                    value: e.traffic_profile || "auto",
                     placeholder: "\u81ea\u52a8(\u8ddf\u968f\u4f2a\u88c5\u6a21\u5f0f)",
                     style: { width: "100%" },
                     allowClear: true,
                     onChange: e=>this.formChange("traffic_profile", e)
-                }, y.a.createElement(N["a"].Option, { value: "chrome_h2" }, "\ud83c\udf10 Chrome \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "safari" }, "\ud83c\udf4e Safari \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "firefox" }, "\ud83e\udd8a Firefox \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "apple_music" }, "\ud83c\udfb5 Apple Music"), y.a.createElement(N["a"].Option, { value: "douyin" }, "\ud83c\udfb5 \u6296\u97f3\u77ed\u89c6\u9891"), y.a.createElement(N["a"].Option, { value: "bilibili" }, "\ud83d\udcfa B\u7ad9\u89c6\u9891"), y.a.createElement(N["a"].Option, { value: "taobao" }, "\ud83d\uded2 \u6dd8\u5b9d\u8d2d\u7269"), y.a.createElement(N["a"].Option, { value: "icloud_sync" }, "\u2601\ufe0f iCloud \u540c\u6b65"), y.a.createElement(N["a"].Option, { value: "tencent_video" }, "\ud83c\udfa6 \u817e\u8baf\u89c6\u9891"))), y.a.createElement("div", {
+                }, y.a.createElement(N["a"].Option, { value: "auto" }, "\ud83d\udd04 \u81ea\u52a8(\u8ddf\u968f\u4f2a\u88c5\u6a21\u5f0f)"), y.a.createElement(N["a"].Option, { value: "chrome_h2" }, "\ud83c\udf10 Chrome \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "safari" }, "\ud83c\udf4e Safari \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "firefox" }, "\ud83e\udd8a Firefox \u6d4f\u89c8"), y.a.createElement(N["a"].Option, { value: "apple_music" }, "\ud83c\udfb5 Apple Music"), y.a.createElement(N["a"].Option, { value: "douyin" }, "\ud83c\udfb5 \u6296\u97f3\u77ed\u89c6\u9891"), y.a.createElement(N["a"].Option, { value: "bilibili" }, "\ud83d\udcfa B\u7ad9\u89c6\u9891"), y.a.createElement(N["a"].Option, { value: "taobao" }, "\ud83d\uded2 \u6dd8\u5b9d\u8d2d\u7269"), y.a.createElement(N["a"].Option, { value: "icloud_sync" }, "\u2601\ufe0f iCloud \u540c\u6b65"), y.a.createElement(N["a"].Option, { value: "tencent_video" }, "\ud83c\udfa6 \u817e\u8baf\u89c6\u9891"))), y.a.createElement("div", {
                     className: "form-group col-md-4 col-xs-12"
                 }, y.a.createElement("label", null, "\u8fde\u63a5\u6700\u5927\u751f\u547d\u5468\u671f", y.a.createElement("span", {
                     style: { color: "#999", fontSize: "12px", marginLeft: "4px" }
@@ -106518,7 +106516,7 @@
                     className: "form-group col-md-4 col-xs-12"
                 }, y.a.createElement("label", null, "\u8def\u5f84\u6c60", y.a.createElement("span", {
                     style: { color: "#999", fontSize: "12px", marginLeft: "4px" }
-                }, "(\u6bcf\u884c\u4e00\u4e2a\uff0c\u7559\u7a7a\u7528\u9ed8\u8ba4)")), y.a.createElement(s["a"].TextArea, {
+                }, "(\u7559\u7a7a\u81ea\u52a8\u968f\u673a\u62fc\u63a5)")), y.a.createElement(s["a"].TextArea, {
                     placeholder: "/api/v2/events/{id}\n/console/{id}/live\n/socket.io/?sid={id}",
                     value: e.path_pool || "",
                     rows: 3,
