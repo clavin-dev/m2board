@@ -887,3 +887,13 @@ ALTER TABLE `v2_server_v2node`
 
 ALTER TABLE `v2_server_v2node`
     ADD COLUMN `download_host` varchar(255) DEFAULT NULL COMMENT '下行域名(服务器→客户端)' AFTER `upload_host`;
+
+-- M2Board: ShadowFlow v2 - 画像/路径池/连接生命周期
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `traffic_profile` varchar(32) DEFAULT NULL COMMENT '流量画像名称' AFTER `download_host`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `path_pool` text DEFAULT NULL COMMENT '路径池(每行一个)' AFTER `traffic_profile`;
+
+ALTER TABLE `v2_server_v2node`
+    ADD COLUMN `conn_max_lifetime` int(11) DEFAULT 0 COMMENT '连接最大存活时间(秒)' AFTER `path_pool`;
